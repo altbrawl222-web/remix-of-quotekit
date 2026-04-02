@@ -31,6 +31,7 @@ const AppContent = () => {
   useCartSync();
   return (
     <>
+      <ThirdPartyScripts />
       <CartDrawer />
       <LiveChatWidget />
       <Routes>
