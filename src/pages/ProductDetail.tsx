@@ -15,7 +15,6 @@ import { products as catalogProducts } from "@/data/catalog";
 import { categories } from "@/data/categories";
 import type { Product } from "@/data/catalog";
 
-// Find local product by ID
 const findLocalProduct = (id: string): Product | undefined => {
   const fromCatalog = catalogProducts.find((p) => p.id === id);
   if (fromCatalog) return fromCatalog;
@@ -34,7 +33,6 @@ const ProductDetail = () => {
   const { addItem: addLocalItem } = useCart();
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
 
-  // Try to find local product
   const localProduct = findLocalProduct(handle || "");
   const isShopify = !!shopifyProduct;
   const product = shopifyProduct;
@@ -48,7 +46,6 @@ const ProductDetail = () => {
     { icon: Lock, label: "Secure Checkout Protection" },
   ];
 
-  // Loading state
   if (shopifyLoading && !localProduct) {
     return (
       <div className="min-h-screen bg-background">
@@ -88,7 +85,6 @@ const ProductDetail = () => {
             <Link to="/products" className="inline-flex items-center gap-1 text-sm text-primary hover:underline mb-8">
               <ChevronLeft className="h-4 w-4" /> Back to Products
             </Link>
-
             <div className="grid lg:grid-cols-2 gap-12">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                 <div className="aspect-square bg-muted rounded-xl flex items-center justify-center mb-4 overflow-hidden">
@@ -109,8 +105,9 @@ const ProductDetail = () => {
                   </div>
                 )}
               </motion.div>
-
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                {/* Judge.me placeholder star rating */}
+                <div className="judgeme-widget mb-2" data-id={product.id} data-type="badge" />
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{product.title}</h1>
                 <p className="text-3xl font-bold text-primary mb-2">${price.toLocaleString()}</p>
                 <p className={`text-sm mb-4 ${available ? "text-green-600" : "text-destructive"}`}>
@@ -129,8 +126,11 @@ const ProductDetail = () => {
                 </Button>
               </motion.div>
             </div>
-
             <ProductTabs description={product.description} handle={product.handle} />
+            {/* Judge.me review widget placeholder */}
+            <div className="mt-12" id="judgeme-reviews">
+              <div className="judgeme-widget" data-id={product.id} data-type="reviews" />
+            </div>
             <ReviewSystem productId={product.id} productTitle={product.title} />
           </div>
         </main>
@@ -141,6 +141,7 @@ const ProductDetail = () => {
 
   // Local product detail
   if (localProduct) {
+    const image = localProduct.images[0];
     return (
       <div className="min-h-screen bg-background">
         <Header />
@@ -149,22 +150,25 @@ const ProductDetail = () => {
             <Link to="/products" className="inline-flex items-center gap-1 text-sm text-primary hover:underline mb-8">
               <ChevronLeft className="h-4 w-4" /> Back to Products
             </Link>
-
             <div className="grid lg:grid-cols-2 gap-12">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                <div className="aspect-square bg-muted rounded-xl flex items-center justify-center">
-                  <span className="text-muted-foreground">Image Coming Soon</span>
+                <div className="aspect-square bg-muted rounded-xl flex items-center justify-center overflow-hidden">
+                  {image ? (
+                    <img src={image} alt={localProduct.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-muted-foreground">Image Coming Soon</span>
+                  )}
                 </div>
               </motion.div>
-
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                {/* Judge.me placeholder star rating */}
+                <div className="judgeme-widget mb-2" data-id={localProduct.id} data-type="badge" />
                 <p className="text-xs text-muted-foreground mb-1">{localProduct.vendor}</p>
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{localProduct.name}</h1>
                 <p className="text-3xl font-bold text-primary mb-2">{localProduct.price}</p>
                 <p className={`text-sm mb-4 ${localProduct.inStock ? "text-green-600" : "text-destructive"}`}>
                   {localProduct.inStock ? "● In Stock" : "● Out of Stock"}
                 </p>
-
                 {localProduct.specs.temp !== "N/A" && (
                   <div className="flex gap-4 mb-5 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1"><Thermometer className="h-4 w-4 text-primary" />{localProduct.specs.temp}</div>
@@ -174,7 +178,6 @@ const ProductDetail = () => {
                     )}
                   </div>
                 )}
-
                 <div className="mb-5"><EstimatedDelivery /></div>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {trust.map((t) => (
@@ -183,13 +186,10 @@ const ProductDetail = () => {
                     </div>
                   ))}
                 </div>
-
                 <Button variant="default" size="lg" className="w-full mb-4" disabled={!localProduct.inStock} onClick={() => addLocalItem(localProduct)}>
                   <ShoppingCart className="h-5 w-5" />Add to Cart
                 </Button>
-
                 <p className="text-muted-foreground text-sm mt-6">{localProduct.description}</p>
-
                 {(localProduct.specs.dimensions || localProduct.specs.weight || localProduct.specs.material) && (
                   <div className="mt-6 border-t border-border pt-4 space-y-2 text-sm">
                     {localProduct.specs.dimensions && <div className="flex justify-between"><span className="text-muted-foreground">Dimensions</span><span className="text-foreground">{localProduct.specs.dimensions}</span></div>}
@@ -199,7 +199,10 @@ const ProductDetail = () => {
                 )}
               </motion.div>
             </div>
-
+            {/* Judge.me review widget placeholder */}
+            <div className="mt-12" id="judgeme-reviews">
+              <div className="judgeme-widget" data-id={localProduct.id} data-type="reviews" />
+            </div>
             <ReviewSystem productId={localProduct.id} productTitle={localProduct.name} />
           </div>
         </main>
@@ -208,7 +211,6 @@ const ProductDetail = () => {
     );
   }
 
-  // Not found
   return (
     <div className="min-h-screen bg-background">
       <Header />
