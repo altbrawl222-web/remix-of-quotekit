@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartDrawer } from "@/components/CartDrawer";
 import { CartProvider } from "@/context/CartContext";
 import { LiveChatWidget } from "@/components/LiveChatWidget";
+import { ThirdPartyScripts } from "@/components/ThirdPartyScripts";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductsPage from "./pages/ProductsPage";
