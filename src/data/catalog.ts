@@ -1,3 +1,18 @@
+import arcticPro from "@/assets/products/arctic-pro-100.jpg";
+import glacierElite from "@/assets/products/glacier-elite-120.jpg";
+import polarCompact from "@/assets/products/polar-compact-60.jpg";
+import summitXl from "@/assets/products/summit-xl-200.jpg";
+import apexDual from "@/assets/products/apex-dual-zone.jpg";
+import titanPro from "@/assets/products/titan-pro-commercial.jpg";
+import chillCover from "@/assets/products/chill-cover-universal.jpg";
+import thermometer from "@/assets/products/plunge-thermometer-pro.jpg";
+import stepPlatform from "@/assets/products/plunge-step-platform.jpg";
+import recoveryRobe from "@/assets/products/recovery-robe.jpg";
+import contrastKit from "@/assets/products/contrast-therapy-kit.jpg";
+import cedarPlunge from "@/assets/products/outdoor-cedar-plunge.jpg";
+import alpineOutdoor from "@/assets/products/alpine-outdoor-pro.jpg";
+import everestXl from "@/assets/products/everest-outdoor-xl.jpg";
+
 export interface Product {
   id: string;
   name: string;
@@ -34,7 +49,7 @@ export const products: Product[] = [
     price: "$4,995",
     priceNum: 4995,
     collection: "cold-plunge-tubs",
-    images: [],
+    images: [arcticPro],
     specs: { temp: "39–60°F", capacity: "100 gal", coolTime: "2 hr", dimensions: "60\" × 30\" × 28\"", weight: "185 lbs", material: "Stainless Steel" },
     badge: "Best Seller",
     inStock: true,
@@ -47,7 +62,7 @@ export const products: Product[] = [
     price: "$6,495",
     priceNum: 6495,
     collection: "cold-plunge-tubs",
-    images: [],
+    images: [glacierElite],
     specs: { temp: "37–55°F", capacity: "120 gal", coolTime: "1.5 hr", dimensions: "68\" × 34\" × 30\"", weight: "220 lbs", material: "Acrylic / Stainless" },
     badge: "Premium",
     inStock: true,
@@ -60,7 +75,7 @@ export const products: Product[] = [
     price: "$2,995",
     priceNum: 2995,
     collection: "cold-plunge-tubs",
-    images: [],
+    images: [polarCompact],
     specs: { temp: "42–65°F", capacity: "60 gal", coolTime: "3 hr", dimensions: "48\" × 28\" × 26\"", weight: "120 lbs", material: "Reinforced ABS" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -72,7 +87,7 @@ export const products: Product[] = [
     price: "$9,995",
     priceNum: 9995,
     collection: "commercial-systems",
-    images: [],
+    images: [summitXl],
     specs: { temp: "35–55°F", capacity: "200 gal", coolTime: "1 hr", dimensions: "84\" × 42\" × 32\"", weight: "380 lbs", material: "Commercial Stainless" },
     badge: "Commercial",
     inStock: true,
@@ -85,7 +100,7 @@ export const products: Product[] = [
     price: "$12,495",
     priceNum: 12495,
     collection: "commercial-systems",
-    images: [],
+    images: [apexDual],
     specs: { temp: "37–104°F", capacity: "160 gal", coolTime: "1.5 hr", dimensions: "96\" × 48\" × 34\"", weight: "450 lbs", material: "Medical-Grade Steel" },
     badge: "Dual Zone",
     inStock: true,
@@ -98,7 +113,7 @@ export const products: Product[] = [
     price: "$14,995",
     priceNum: 14995,
     collection: "commercial-systems",
-    images: [],
+    images: [titanPro],
     specs: { temp: "34–50°F", capacity: "250 gal", coolTime: "45 min", dimensions: "90\" × 44\" × 36\"", weight: "520 lbs", material: "Industrial Stainless" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -110,7 +125,7 @@ export const products: Product[] = [
     price: "$249",
     priceNum: 249,
     collection: "accessories",
-    images: [],
+    images: [chillCover],
     specs: { temp: "N/A", capacity: "Fits up to 72\"", coolTime: "N/A", material: "Marine-Grade Vinyl" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -122,7 +137,7 @@ export const products: Product[] = [
     price: "$89",
     priceNum: 89,
     collection: "accessories",
-    images: [],
+    images: [thermometer],
     specs: { temp: "±0.5°F accuracy", capacity: "N/A", coolTime: "N/A", material: "Waterproof ABS" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -134,7 +149,7 @@ export const products: Product[] = [
     price: "$179",
     priceNum: 179,
     collection: "accessories",
-    images: [],
+    images: [stepPlatform],
     specs: { temp: "N/A", capacity: "400 lb capacity", coolTime: "N/A", dimensions: "24\" × 16\" × 8\"", material: "Reinforced Polymer" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -146,7 +161,7 @@ export const products: Product[] = [
     price: "$129",
     priceNum: 129,
     collection: "recovery-equipment",
-    images: [],
+    images: [recoveryRobe],
     specs: { temp: "N/A", capacity: "One Size", coolTime: "N/A", material: "Microfiber / Nylon" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -158,7 +173,7 @@ export const products: Product[] = [
     price: "$349",
     priceNum: 349,
     collection: "recovery-equipment",
-    images: [],
+    images: [contrastKit],
     specs: { temp: "N/A", capacity: "Full Kit", coolTime: "N/A", material: "Mixed" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -170,7 +185,7 @@ export const products: Product[] = [
     price: "$3,795",
     priceNum: 3795,
     collection: "outdoor-units",
-    images: [],
+    images: [cedarPlunge],
     specs: { temp: "40–65°F", capacity: "80 gal", coolTime: "2.5 hr", dimensions: "42\" diameter × 36\"", weight: "160 lbs", material: "Western Red Cedar" },
     badge: "Outdoor",
     inStock: true,
@@ -183,7 +198,7 @@ export const products: Product[] = [
     price: "$5,495",
     priceNum: 5495,
     collection: "outdoor-units",
-    images: [],
+    images: [alpineOutdoor],
     specs: { temp: "37–60°F", capacity: "110 gal", coolTime: "2 hr", dimensions: "66\" × 32\" × 30\"", weight: "240 lbs", material: "UV-Stable Composite" },
     inStock: true,
     vendor: "FrostHaven Equipment",
@@ -195,7 +210,7 @@ export const products: Product[] = [
     price: "$7,995",
     priceNum: 7995,
     collection: "outdoor-units",
-    images: [],
+    images: [everestXl],
     specs: { temp: "35–58°F", capacity: "150 gal", coolTime: "1.5 hr", dimensions: "78\" × 38\" × 32\"", weight: "310 lbs", material: "Composite / Stainless" },
     badge: "Premium",
     inStock: true,
